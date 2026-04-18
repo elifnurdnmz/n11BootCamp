@@ -36,5 +36,14 @@ Sistem, yeni ödeme yöntemlerine açıktır ancak mevcut kodun değiştirilmesi
 - **Java:** Dil temelinde OOP prensipleri.
 - **Swing:** Masaüstü kullanıcı arayüzü.
 
+## Geliştirme Alanları
+- Hata takibi için loglama (Logging) entegrasyonu eklenebilir.
+- Veritabanı bağlantısı yapılabilir.
+- Birim testleri ile kod doğruluğu kontrol altına alınabilir.
+
+## 👩🏻‍💻 Geliştirici
+
+Elifnur Dönmez
+
 ---
 *Bu proje N11 BootCamp kapsamında ödev olarak hazırlanmıştır.*

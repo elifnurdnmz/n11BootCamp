@@ -17,6 +17,6 @@ This repository contains my assignments and exercises from the n11 Bootcamp prog
 
 Each homework/project is organized in separate packages for clarity and maintainability.
 
-## 👩‍💻 Author
+## 👩🏻‍💻 Author
 
 Elifnur Dönmez
