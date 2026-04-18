@@ -1,6 +1,6 @@
-package homework1.app.validation;
+package homework1.paymentapp.validation;
 
-import homework1.app.exceptions.InvalidAmountException;
+import homework1.paymentapp.exceptions.InvalidAmountException;
 
 public class AmountValidator {
 

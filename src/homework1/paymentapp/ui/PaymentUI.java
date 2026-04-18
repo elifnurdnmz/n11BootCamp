@@ -1,10 +1,11 @@
-package homework1.app.ui;
+package homework1.paymentapp.ui;
 
-import homework1.app.exceptions.InvalidAmountException;
-import homework1.app.payment.*;
-import homework1.app.payment.enums.Currency;
-import homework1.app.payment.enums.PaymentType;
-import homework1.app.validation.AmountValidator;
+import homework1.paymentapp.exceptions.InvalidAmountException;
+import homework1.paymentapp.payment.*;
+import homework1.paymentapp.payment.enums.Currency;
+import homework1.paymentapp.payment.enums.PaymentType;
+import homework1.paymentapp.service.PaymentService;
+import homework1.paymentapp.validation.AmountValidator;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,9 +14,9 @@ public class PaymentUI extends JFrame {
 
     private JLabel resultLabel;
 
-    public PaymentUI() {
+    public PaymentUI(PaymentService paymentService) {
         setTitle("ÖDEME EKRANI");
-        setSize(500, 250);
+        setSize(600, 250);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
 
@@ -27,24 +28,17 @@ public class PaymentUI extends JFrame {
 
         resultLabel = new JLabel("Ödeme yöntemi seçiniz");
 
-        PaymentRegistry payments = new PaymentRegistry();
-
         payButton.addActionListener(e -> {
 
-            PaymentType selectedPayment = (PaymentType) paymentBox.getSelectedItem();
-            Currency selectedCurrency = (Currency) currencyBox.getSelectedItem();
-
-            double amount;
-
             try {
-                amount = AmountValidator.validate(amountField.getText());
+                double amount = AmountValidator.validate(amountField.getText());
+                PaymentType selectedPayment = (PaymentType) paymentBox.getSelectedItem();
+                Currency selectedCurrency = (Currency) currencyBox.getSelectedItem();
+                String message = paymentService.payAmount(selectedPayment, amount, selectedCurrency);
+                resultLabel.setText(message);
             } catch (InvalidAmountException ex) {
                 resultLabel.setText(ex.getMessage());
-                return;
             }
-
-            PaymentMethod payment = payments.get(selectedPayment);
-            resultLabel.setText(payment.pay(amount, selectedCurrency));
         });
 
         add(paymentBox);

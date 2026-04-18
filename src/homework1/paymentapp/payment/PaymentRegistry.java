@@ -1,6 +1,6 @@
-package homework1.app.payment;
+package homework1.paymentapp.payment;
 
-import homework1.app.payment.enums.PaymentType;
+import homework1.paymentapp.payment.enums.PaymentType;
 
 import java.util.HashMap;
 import java.util.Map;

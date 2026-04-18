@@ -1,4 +1,4 @@
-package homework1.app.payment.enums;
+package homework1.paymentapp.payment.enums;
 
 public enum PaymentType {
     APPLE_PAY("Apple Pay"),
