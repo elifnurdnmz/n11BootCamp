@@ -5,5 +5,7 @@
 # Build
 out/
 
+/target
+
 # OS
 .DS_Store
