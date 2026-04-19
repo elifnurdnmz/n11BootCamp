@@ -1,28 +1,31 @@
 package homework1.paymentapp.payment;
 
 import homework1.paymentapp.payment.enums.PaymentType;
+import jakarta.annotation.PostConstruct;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
-import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Map;
 
 @Component
 public class PaymentRegistry {
     private final Map<PaymentType, PaymentMethod> payments = new HashMap<>();
+    private final ApplicationContext applicationContext;
 
-    public PaymentRegistry() {
+    public PaymentRegistry(ApplicationContext applicationContext) {
+        this.applicationContext = applicationContext;
         autoRegister();
     }
 
+    @PostConstruct
     private void autoRegister() {
         try {
             for (PaymentType type : PaymentType.values()) {
                 String className = "homework1.paymentapp.payment." + formatClassName(type.name());
-
                 Class<?> clazz = Class.forName(className);
-                Constructor<?> constructor = clazz.getConstructor();
-                PaymentMethod instance = (PaymentMethod) constructor.newInstance();
+
+                PaymentMethod instance = (PaymentMethod) applicationContext.getBean(clazz);
 
                 payments.put(type, instance);
             }
