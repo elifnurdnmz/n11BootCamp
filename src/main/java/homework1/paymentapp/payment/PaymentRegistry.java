@@ -1,11 +1,13 @@
 package homework1.paymentapp.payment;
 
 import homework1.paymentapp.payment.enums.PaymentType;
+import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class PaymentRegistry {
     private final Map<PaymentType, PaymentMethod> payments = new HashMap<>();
 

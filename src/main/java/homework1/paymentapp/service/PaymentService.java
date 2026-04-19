@@ -5,10 +5,12 @@ import homework1.paymentapp.payment.PaymentRegistry;
 import homework1.paymentapp.payment.enums.Currency;
 import homework1.paymentapp.payment.enums.PaymentType;
 import homework1.paymentapp.repo.PaymentRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+@Service
 public class PaymentService {
     private static final Logger logger = Logger.getLogger(PaymentService.class.getName());
 

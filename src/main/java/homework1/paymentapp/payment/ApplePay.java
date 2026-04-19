@@ -1,7 +1,9 @@
 package homework1.paymentapp.payment;
 
 import homework1.paymentapp.payment.enums.Currency;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ApplePay implements PaymentMethod {
     @Override
     public String pay(double tutar, Currency currency) {

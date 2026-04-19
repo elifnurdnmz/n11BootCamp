@@ -18,7 +18,8 @@ Her sınıfın tek bir sorumluluğu vardır:
 Sistem, yeni ödeme yöntemlerine açıktır ancak mevcut kodun değiştirilmesine kapalıdır. Yeni bir ödeme yöntemi eklemek için:
 - `PaymentMethod` interface'inden yeni bir sınıf türetilir.
   Mevcut `PaymentService` veya `PaymentUI` sınıflarında hiçbir değişiklik yapılması gerekmez.
-
+- `PaymentRegistry` sınıfı içerisinde **Java Reflection API** kullanılmıştır. Otomatik Kayıt (Auto-Registration) metodu oluşturulmuştur.
+  Bu sayede, sisteme yeni bir ödeme yöntemi (sınıf) eklendiğinde, `PaymentRegistry` sınıfına gidip manuel olarak `put()` işlemi yapmaya gerek kalmaz. Sistem, çalışma zamanında (runtime) ilgili paketteki sınıfları tarar ve Enum değerleriyle eşleşen sınıfları otomatik olarak yükler.
 ### 3. Dependency Inversion Principle (DIP)
 `PaymentService` ve `PaymentUI` somut sınıflara (örneğin doğrudan CreditCard sınıfına) bağımlı değildir. Bunun yerine `PaymentMethod` ve `PaymentRepository` arayüzlerine bağımlıdır.
 
