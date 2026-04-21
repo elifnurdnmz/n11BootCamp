@@ -1,0 +1,13 @@
+services:
+  postgres-db:
+    image: postgres:16
+    container_name: my-postgres-container
+    restart: always
+    environment:
+      POSTGRES_USER: elifnurdonmez
+      POSTGRES_PASSWORD: 77092766
+      POSTGRES_DB: mydb
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
